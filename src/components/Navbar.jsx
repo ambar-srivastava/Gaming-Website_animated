@@ -1,97 +1,3 @@
-// import { useEffect, useRef, useState } from "react"
-// import Button from "./Button";
-// import { TiLocationArrow } from "react-icons/ti";
-// import { useWindowScroll } from "react-use";
-// import gsap from "gsap";
-
-
-// const navItems = ["Nexus", "Vault", "Prologue", "About", "Contact"]
-
-// const Navbar = () => {
-//   const [isAudioPLaying, setIsAudioPLaying] = useState(false);
-
-//   const [isIndicatorActive, setIsIndicatorActive] = useState(false);
-
-//   const [lastScrollY, setLastScrollY] = useState(0);
-
-//   const [isNavVisible, setIsNavVisible] = useState(true)
-
-//   const navContainerRef = useRef(null);
-
-//   const audioElementRef = useRef(null);
-
-//   const { y: currentScrollY } = useWindowScroll();
-
-//   useEffect(() => {
-//     if(currentScrollY === 0){
-//       setIsNavVisible(true);
-//       navContainerRef.current.classList.remove("floating-nav");
-//     } else if(currentScrollY>lastScrollY){
-//       setIsNavVisible(false);
-//       navContainerRef.current.classList.add("floating-nav");
-//     } else if(currentScrollY<lastScrollY){
-//       navContainerRef.current.classList.add("floating-nav");
-//     }
-
-//     setLastScrollY(currentScrollY);
-//   },[currentScrollY])
-
-//   useEffect(() => {
-//     gsap.to(navContainerRef, {
-//       y: isNavVisible ? 0 : -100,
-//       opacity: isNavVisible ? 1 : 0,
-//       duration: 0.2,
-//     })
-//   },[isNavVisible])
-
-//   const toggleAudioIndicator = () => {
-//     setIsAudioPLaying((prev)=>!prev);
-
-//     setIsIndicatorActive((prev) => !prev);
-//   }
-
-//   useEffect(() => {
-//    if(isAudioPLaying ){
-//     audioElementRef.current.play();
-//    } else {
-//     audioElementRef.current.pause();
-//    }
-//   }, [isAudioPLaying])
-  
-
-//   return (
-//     <section ref={navContainerRef} className="fixed bg-slate-400 top-4 inset-x-0 z-50 h-16 border-none transition-all duration-700 sm:inset-x-6">
-//       <header className="absolute w-full top-1/2 translate-y-1/2">
-//         <nav className="flex size-full items-center justify-between p-4">
-//           <div className="flex items-center gap-7">
-//           <img src="./img/logo.png" alt="logo" className="w-10" />
-
-//           <Button id="product-button"
-//             title="Products" rightIcon={<TiLocationArrow />} containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"/>
-//           </div>
-
-//           <div className="flex items-center h-full">
-//           <div className="hidden md:block">
-//             {navItems.map((item, index) => (
-//               <a className="nav-hover-btn" href={`#${item.toLowerCase()}`} key={index}>{item}</a>
-//             ))}
-//           </div>
-//             <button className=" ml-10 flex items-center space-x-0.5" onClick={toggleAudioIndicator }>
-//               <audio ref={audioElementRef} className="hidden" src="./audio/loop.mp3" loop />
-//                 {[1,2,3,4].map((bar)=>(
-//                   <div key={bar} className={`indicator-line ${isIndicatorActive ? 'active' : ""}`} style={{animationDelay: `${bar * 0.1}s`}} />
-//                 ))}
-//             </button>
-//           </div>
-//         </nav>
-//       </header>
-//     </section>
-//   )
-// }
-
-// export default Navbar
-
-// import clsx from "clsx";
 import gsap from "gsap";
 import { useWindowScroll } from "react-use";
 import { useEffect, useRef, useState } from "react";
@@ -99,7 +5,29 @@ import { TiLocationArrow } from "react-icons/ti";
 
 import Button from "./Button";
 
-const navItems = ["Nexus", "Vault", "Prologue", "About", "Contact"];
+// const navItems = ["Nexus", "Vault", "Prologue", "About", "Contact"];
+const navItems = [
+  {
+    title: "Nexus",
+    href: "#",
+  },
+  {
+    title: "About",
+    href: "#about",
+  },
+  {
+    title: "Prologue",
+    href: "#features",
+  },
+  {
+    title: "Vault",
+    href: "#story",
+  },
+  {
+    title: "Contact",
+    href: "#contact",
+  },
+];
 
 const NavBar = () => {
   // State for toggling audio and visual indicator
@@ -180,10 +108,10 @@ const NavBar = () => {
               {navItems.map((item, index) => (
                 <a
                   key={index}
-                  href={`#${item.toLowerCase()}`}
+                  href={`${item.href.toLowerCase()}`}
                   className="nav-hover-btn"
                 >
-                  {item}
+                  {item.title}
                 </a>
               ))}
             </div>
@@ -199,17 +127,13 @@ const NavBar = () => {
                 loop
               />
               {[1, 2, 3, 4].map((bar) => (
-                // <div
-                //   key={bar}
-                //   className={clsx("indicator-line", {
-                //     active: isIndicatorActive,
-                //   })}
-                //   style={{
-                //     animationDelay: `${bar * 0.1}s`,
-                //   }}
-                // />
-
-                <div key={bar} className={`indicator-line ${isIndicatorActive ? 'active' : ""}`} style={{animationDelay: `${bar * 0.1}s`}} />
+                <div
+                  key={bar}
+                  className={`indicator-line ${
+                    isIndicatorActive ? "active" : ""
+                  }`}
+                  style={{ animationDelay: `${bar * 0.1}s` }}
+                />
               ))}
             </button>
           </div>

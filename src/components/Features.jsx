@@ -62,7 +62,7 @@ export const BentoCard = ({ src, title, description }) => {
 
 const Features = () => {
   return (
-    <section className="bg-black pb-52">
+    <section className="bg-black pb-52" id="features">
       <div className="container mx-auto px-3 md:px-0">
         <div className="py-32">
           <p className="font-circular-web text-lg text-blue-50">
