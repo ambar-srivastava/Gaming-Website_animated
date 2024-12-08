@@ -29,10 +29,10 @@ const About = () => {
 
   return (
     <section id='about' className='min-h-screen w-screen'>
-        <div className=" relative mb-8 mt-36 flex flex-col items-center gap-5">
+        <div className="relative mb-8 mt-36 flex flex-col items-center gap-5">
             <h2 className="font-general text-sm uppercase md:text-[16px]">Welcome to Gaming Zone</h2>
 
-            <AnimatedTitle title="Disc<b>o</b>ver the w<b>o</b>rld&apos;s l<b>a</b>rgest sh<b>a</b>red <b>a</b>dventure" containerClass=" mt-5 !text-black text-center" />
+            <AnimatedTitle title="Disc<b>o</b>ver t<b>h</b>e w<b>o</b>rld&apos;s l<b>a</b>rgest sh<b>a</b>red <b>a</b>d<b>v</b>ent<b>u</b>re" containerClass=" mt-5 !text-black text-center" />
 
             <div className="about-subtext">
                 <p>The Game of Games begins-your life, now an epic MMORPG</p>
